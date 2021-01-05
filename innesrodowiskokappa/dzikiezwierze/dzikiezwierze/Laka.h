@@ -11,13 +11,13 @@ class Laka: public Pole
 private:
 protected:
 
-	float laka;
+	int laka;
 	void ustaw_zasob();
-	void ustaw_zasob(float nowa_laka);
+	void ustaw_zasob(int nowa_laka);
 public:
 	Laka();
-	void uzyj_zasob(Stworzenie* zwierze);
-	float get_laka();
+	int uzyj_zasob(int laka);
+	int get_zasob();
 };
 
 #endif

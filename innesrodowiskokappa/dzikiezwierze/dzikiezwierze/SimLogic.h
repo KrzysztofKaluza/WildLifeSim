@@ -5,6 +5,7 @@
 #include "Plansza.h"
 
 #include <chrono>
+#include <thread>
 
 class SimLogic
 {
@@ -20,6 +21,7 @@ public:
 	void start_program();
 	void start_simulation();
 	void simulate();
+	void przygotowanie_informacji_i_zapis();
 };
 
 #endif

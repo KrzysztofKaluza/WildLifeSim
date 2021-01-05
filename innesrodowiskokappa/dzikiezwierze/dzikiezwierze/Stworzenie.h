@@ -3,19 +3,27 @@
 
 #include <string>
 
+#include "Pole.h"
+#define MAX_PRAGNIENIE 100
+#define MAX_GLOD 100
 using namespace std;
 struct Pozycja {
 	int x;
 	int y;
 };
 
-enum State{odpoczynek=0, przemieszczanie, jedzenie, picie};
+enum State{odpoczynek=0, przemieszczanie, polowanie, jedzenie, picie, smierc, koniec};
 
 class Stworzenie
 {
 private:
 protected:
-	
+	float kierunek;
+	int dystans;
+	bool czy_dotarl;
+	bool szuka_jedzenie;
+	bool szuka_picie;
+	int id_zwierzecia;
 	Pozycja pozycja;
 	string nazwa_stworzenia;
 	int HP;
@@ -23,11 +31,15 @@ protected:
 	int szybkosc;
 	int pragnienie;
 	int obrazenia;
+	int przenoszone_mieso;
 	int prog_szukania_pozywienia;
 	int prog_szukania_wody;
 	bool czy_zyje;
+	int maxObszarX;
+	int maxObszarY;
 	State stan;
-	string na_jakim_polu_stoi;
+	Pole *pole_na_ktorym_stoi;
+	
 public:
 	Stworzenie();
 	//virtual void szukanie_pozywienia();
@@ -48,6 +60,12 @@ public:
 	int getPozycja_x();
 	int getPozycja_y();
 	bool getCzy_zyje();
-	void wczytaj_pole(string);
+	void wczytaj_pole(Pole* pole);
+	bool czyPozaObszarem(int pos_x, int pos_y);
+	virtual void setNajblizsza_ofiara_zwierze(Stworzenie* zwierz);
+	virtual void setNajblizsza_ofiara_roslinozerca(Stworzenie* roslinozerca);
+	void usmierc();
+
+	
 };
 #endif

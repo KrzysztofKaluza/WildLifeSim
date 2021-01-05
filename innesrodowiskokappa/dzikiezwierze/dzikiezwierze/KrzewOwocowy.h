@@ -10,14 +10,14 @@ class KrzewOwocowy : public Pole
 {
 private:
 protected:
-	float owoc;
+	int owoc;
 	void ustaw_zasob();
-	void ustaw_zasob(float nowy_owoc);
+	void ustaw_zasob(int nowy_owoc);
 public:
 	KrzewOwocowy();
 	
-	void uzyj_zasob(Stworzenie* zwierze);
-	float get_owoc();
+	int uzyj_zasob(int owoc);
+	int get_zasob();
 };
 #endif
 

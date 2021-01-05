@@ -2,9 +2,9 @@
 
 ZrodloWody::ZrodloWody()
 {
-	float ile_zasobu = rand() % 120;
+	int ile_zasobu = rand() % 120;
 	this->ustaw_zasob(ile_zasobu);
-	this->rodzaj_pola = "woda";
+	this->rodzaj_pola = Typ_pola::ZRODLO_WODY;
 }
 
 void ZrodloWody::ustaw_zasob()
@@ -12,17 +12,24 @@ void ZrodloWody::ustaw_zasob()
 	this->woda = 0;
 }
 
-void ZrodloWody::ustaw_zasob(float nowa_woda)
+void ZrodloWody::ustaw_zasob(int nowa_woda)
 {
 	this->woda = nowa_woda;
 }
 
-void ZrodloWody::uzyj_zasob(Stworzenie* zwierze)
+int ZrodloWody::uzyj_zasob(int woda)
 {
-	
+	this->woda = this->woda - woda;
+	if (this->woda < 0) {
+		woda = woda + this->woda;
+		this->woda = 0;
+	}
+	return woda;
 }
 
-float ZrodloWody::get_woda()
+int ZrodloWody::get_zasob()
 {
 	return this->woda;
 }
+
+

@@ -11,3 +11,27 @@ unsigned short Interface::menu() {
 	return wybor_w_menu;
 }
 
+void Interface::zapisz_do_csv(int ile_martwych_mieso, int ile_martwych_rosli, int ile_mieso, int ile_rosli)
+{
+	fstream file;
+	file.open("wynik.csv", ios::out);
+	file << "gatunek,zywi,martwi\n";
+	file << "miesozercy," << ile_mieso << "," << ile_martwych_mieso << "\n";
+	file << "roslinozercy," << ile_rosli << "," << ile_martwych_rosli << "\n";
+	file.close();
+}
+
+void Interface::pozegnanie()
+{
+	cout << "\nZAKONCZENIE PROGRAMU\n";
+}
+
+void Interface::nie_ma_opcji()
+{
+	cout << "\nBRAK OPCJI\n";
+}
+
+
+
+
+

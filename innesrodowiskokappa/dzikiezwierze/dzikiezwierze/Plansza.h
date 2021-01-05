@@ -1,5 +1,7 @@
 #ifndef PLANSZA_H
 #define PLANSZA_H
+
+#define ILE_ZWIERZAT 8
 #include <vector>
 #include <iostream>
 
@@ -15,6 +17,8 @@ class Plansza
 private:
 	std::vector<std::vector<Pole*>> plansza;
 	std::vector<Stworzenie*> zwierzeta;
+	Stworzenie* tablica_najblizszych_zwierzat[ILE_ZWIERZAT];
+	Stworzenie* tablica_najblizszych_roslinozercow[ILE_ZWIERZAT];
 	int rozmiar_pola;
 	int rozmiar_planszy_x;
 	int rozmiar_planszy_y;
@@ -23,6 +27,7 @@ protected:
 	string miesozerca = "miesozerca";
 	int martwi_roslinozercy;
 	int martwi_miesozercy;
+	int ilosc_roslinozercow;
 public:
 	
 	Plansza();
@@ -33,6 +38,9 @@ public:
 	void zlicz_martwe_zwierzeta();
 	int getMartwi_roslinozercy();
 	int getMartwi_miesozercy();
+	int getIlosc_roslinozercow();
+	
+	void znajdz_najblizsze_siebie_zwierzeta();
 };
 
 #endif

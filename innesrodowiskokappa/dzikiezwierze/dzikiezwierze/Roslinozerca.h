@@ -5,9 +5,10 @@
 
 class Roslinozerca : public Stworzenie
 {
-
+	
 public:
-	Roslinozerca(string name, int pozycja_x, int pozycja_y, string rodzaj_pola);
+	Roslinozerca(int id_zwierza, string name, int pozycja_x, int pozycja_y, Pole* pole,
+		int maxObszarX, int maxObszarY);
 	//void zmiana_pozywienia();
 	//void szukanie_pozywienia();
 	//void zmiana_glodu();

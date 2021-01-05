@@ -1,0 +1,2 @@
+symulacja_zwierzat: Interface.cpp KrzewOwocowy.cpp Laka.cpp Main.cpp Miesozerca.cpp Plansza.cpp Pole.cpp Roslinozerca.cpp SimLogic.cpp Stworzenie.cpp ZrodloWody.cpp
+	g++ -o symulacja_zwier1zat Interface.cpp KrzewOwocowy.cpp Laka.cpp Main.cpp Miesozerca.cpp Plansza.cpp Pole.cpp Roslinozerca.cpp SimLogic.cpp Stworzenie.cpp ZrodloWody.cpp -I .

@@ -4,14 +4,10 @@ Stworzenie::Stworzenie()
 {
 	this->czy_zyje = true;
 	this->HP = rand() % 50 + 101;
-	this->glod = MAX_GLOD;
-	this->pragnienie = MAX_PRAGNIENIE;
+	this->glod = 100;
+	this->pragnienie = 100;
 	this->szybkosc = rand() % 100 + 101;
 	this->obrazenia = rand() % 30 + 31;
-	this->przenoszone_mieso = rand() % 30 + 21;
-	this->szuka_jedzenie = false;
-	this->szuka_picie = false;
-	this->czy_dotarl = true;
 }
 
 
@@ -87,31 +83,7 @@ bool Stworzenie::getCzy_zyje()
 	return this->czy_zyje;
 }
 
-void Stworzenie::wczytaj_pole(Pole* pole)
+void Stworzenie::wczytaj_pole(string nazwa_pola)
 {
-	this->pole_na_ktorym_stoi = pole;
+	this->na_jakim_polu_stoi = nazwa_pola;
 }
-
-bool Stworzenie::czyPozaObszarem(int pos_x, int pos_y)
-{
-	if (pos_x < 0|| pos_y < 0
-		|| pos_x >= this->maxObszarX 
-		|| pos_y >= this->maxObszarY) {
-		return true;
-	}
-	return false;
-}
-
-void Stworzenie::setNajblizsza_ofiara_zwierze(Stworzenie * zwierz)
-{
-}
-
-void Stworzenie::setNajblizsza_ofiara_roslinozerca(Stworzenie * roslinozerca)
-{
-}
-
-void Stworzenie::usmierc()
-{
-	this->stan = State::smierc;
-}
-

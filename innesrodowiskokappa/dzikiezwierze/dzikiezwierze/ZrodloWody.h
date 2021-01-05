@@ -9,13 +9,13 @@ class ZrodloWody: public Pole
 {
 private:
 protected:
-	int woda;
+	float woda;
 	void ustaw_zasob();
-	void ustaw_zasob(int nowa_woda);
+	void ustaw_zasob(float nowa_woda);
 public:
 	ZrodloWody();
-	int uzyj_zasob(int woda);
-	int get_zasob();
+	void uzyj_zasob(Stworzenie* zwierze);
+	float get_woda();
 };
 
 #endif

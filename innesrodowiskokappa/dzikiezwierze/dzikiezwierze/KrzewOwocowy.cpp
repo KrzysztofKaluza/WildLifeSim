@@ -2,9 +2,9 @@
 
 KrzewOwocowy::KrzewOwocowy()
 {
-	int ile_zasobu = rand() % 120;
+	float ile_zasobu = rand() % 120;
 	this->ustaw_zasob(ile_zasobu);
-	this->rodzaj_pola = Typ_pola::KRZEW_OWOCOWY;
+	this->rodzaj_pola = "krzew";
 }
 
 void KrzewOwocowy::ustaw_zasob()
@@ -12,22 +12,17 @@ void KrzewOwocowy::ustaw_zasob()
 	this->owoc = 0;
 }
 
-void KrzewOwocowy::ustaw_zasob(int nowy_owoc)
+void KrzewOwocowy::ustaw_zasob(float nowy_owoc)
 {
 	this->owoc = nowy_owoc;
 }
 
-int KrzewOwocowy::uzyj_zasob(int owoc)
+void KrzewOwocowy::uzyj_zasob(Stworzenie* zwierze)
 {
-	this->owoc = this->owoc - owoc;
-	if (this->owoc < 0) {
-		owoc = owoc + this->owoc;
-		this->owoc = 0;
-	}
-	return owoc;
+
 }
 
-int KrzewOwocowy::get_zasob()
+float KrzewOwocowy::get_owoc()
 {
 	return this->owoc;
 }

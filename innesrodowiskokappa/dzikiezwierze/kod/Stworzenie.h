@@ -18,6 +18,8 @@ class Stworzenie
 {
 private:
 protected:
+	int prog_ataku_miesozercow;
+	Stworzenie* najblizsza_ofiara_zwierze;
 	float kierunek;
 	int dystans;
 	bool czy_dotarl;
@@ -31,7 +33,9 @@ protected:
 	int szybkosc;
 	int pragnienie;
 	int obrazenia;
-	int przenoszone_mieso;
+	/*Ka¿dy zwierz przenosi w sobie jak¹œ iloœæ miêsa,
+	która zostaje oddana do pola, gdy umrze*/
+	int przenoszone_mieso; 
 	int prog_szukania_pozywienia;
 	int prog_szukania_wody;
 	bool czy_zyje;
@@ -42,11 +46,8 @@ protected:
 	
 public:
 	Stworzenie();
-	//virtual void szukanie_pozywienia();
-	//virtual void zmiana_glodu();
-	//virtual void zmiana_pozywienia();
-	virtual void update();
-	virtual void maszyna_stanow();
+	virtual void update() = 0;
+	virtual void maszyna_stanow() = 0;
 	State getStan();
 	void setNazwa_stworzenia(string nazwa);
 	string getNazwa_stworzenia();
@@ -59,11 +60,11 @@ public:
 	int getProg_szukania_wody();
 	int getPozycja_x();
 	int getPozycja_y();
+	int getProg_ataku_miesozercow();
 	bool getCzy_zyje();
 	void wczytaj_pole(Pole* pole);
 	bool czyPozaObszarem(int pos_x, int pos_y);
 	virtual void setNajblizsza_ofiara_zwierze(Stworzenie* zwierz);
-	virtual void setNajblizsza_ofiara_roslinozerca(Stworzenie* roslinozerca);
 	void usmierc();
 
 	

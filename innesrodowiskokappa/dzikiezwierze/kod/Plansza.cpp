@@ -97,7 +97,6 @@ void Plansza::update()
 		index_y = floor(this->zwierzeta[i]->getPozycja_y() / this->rozmiar_pola);
 		this->zwierzeta[i]->wczytaj_pole(this->plansza[index_x][index_y]);
 		if (this->zwierzeta[i]->getNazwa_stworzenia() == this->miesozerca) {
-			this->zwierzeta[i]->setNajblizsza_ofiara_roslinozerca(this->tablica_najblizszych_roslinozercow[i]);
 			this->zwierzeta[i]->setNajblizsza_ofiara_zwierze(this->tablica_najblizszych_zwierzat[i]);
 		}
 		
@@ -176,8 +175,14 @@ void Plansza::znajdz_najblizsze_siebie_zwierzeta()
 				}
 
 			}
-			this->tablica_najblizszych_zwierzat[i] = this->zwierzeta[j_dla_najblizszego_zwierza];
-			this->tablica_najblizszych_roslinozercow[i] = this->zwierzeta[j_dla_najblizszego_roslinozercy];
+			if (this->zwierzeta[i]->getGlod() <= this->zwierzeta[i]->getProg_ataku_miesozercow()) {
+				this->tablica_najblizszych_zwierzat[i] = this->zwierzeta[j_dla_najblizszego_zwierza];
+			}
+			else {
+				this->tablica_najblizszych_zwierzat[i] = this->zwierzeta[j_dla_najblizszego_roslinozercy];
+			}
+			
+			
 		}
 		
 	}

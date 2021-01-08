@@ -15,7 +15,7 @@ int Pole::get_mieso()
 	return this->mieso;
 }
 
-int Pole::jedz_mieso(int zjedzone_mieso)
+int Pole::uzyj_mieso(int zjedzone_mieso)
 {
 	this->mieso = this->mieso - zjedzone_mieso;
 	if (this->mieso <= 0) {
@@ -25,7 +25,7 @@ int Pole::jedz_mieso(int zjedzone_mieso)
 	return zjedzone_mieso;
 }
 
-void Pole::smierc_zwierzatka(int mieso_z_zwierzatka)
+void Pole::dodaj_mieso(int mieso)
 {
-	this->mieso = mieso_z_zwierzatka;
+	this->mieso = this->mieso + mieso;
 }

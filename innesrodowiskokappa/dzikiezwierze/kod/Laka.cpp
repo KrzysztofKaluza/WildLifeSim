@@ -19,15 +19,15 @@ void Laka::ustaw_zasob(int nowa_laka)
 	this->laka = nowa_laka;
 }
 
-int Laka::uzyj_zasob(int laka)
+int Laka::uzyj_zasob(int zasob)
 {
 	/*funkcja wywolywana w zwierzeciu do przekazania zasobu*/
-	this->laka = this->laka - laka;
+	this->laka = this->laka - zasob;
 	if (this->laka < 0) {
-		laka = laka + this->laka;
+		zasob = zasob + this->laka;
 		this->laka = 0;
 	}
-	return laka;
+	return zasob;
 }
 
 int Laka::get_zasob()

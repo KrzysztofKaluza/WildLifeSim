@@ -18,7 +18,6 @@ private:
 	std::vector<std::vector<Pole*>> plansza;
 	std::vector<Stworzenie*> zwierzeta;
 	Stworzenie* tablica_najblizszych_zwierzat[ILE_ZWIERZAT];
-	Stworzenie* tablica_najblizszych_roslinozercow[ILE_ZWIERZAT];
 	int rozmiar_pola;
 	int rozmiar_planszy_x;
 	int rozmiar_planszy_y;
@@ -41,6 +40,7 @@ public:
 	int getIlosc_roslinozercow();
 	
 	void znajdz_najblizsze_siebie_zwierzeta();
+	
 };
 
 #endif

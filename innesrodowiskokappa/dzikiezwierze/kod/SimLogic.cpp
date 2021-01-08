@@ -47,8 +47,8 @@ void SimLogic::start_simulation() {
 void SimLogic::simulate()
 {
 	auto begin = std::chrono::high_resolution_clock::now();
-	int duration = NULL;
-	int duration_one_loop = NULL;
+	int duration = 0;
+	int duration_one_loop = 0;
 	//pętla główna programu, wykonuje się przez czas zadeklarowany w zmiennej simulation duration
 	while (duration < this->simulation_duration) {
 		auto begin_one_loop = std::chrono::high_resolution_clock::now();

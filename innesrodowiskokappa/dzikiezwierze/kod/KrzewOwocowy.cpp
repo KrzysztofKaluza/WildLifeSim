@@ -19,15 +19,15 @@ void KrzewOwocowy::ustaw_zasob(int nowy_owoc)
 	this->owoc = nowy_owoc;
 }
 
-int KrzewOwocowy::uzyj_zasob(int owoc)
+int KrzewOwocowy::uzyj_zasob(int zasob)
 {
 	/*funkcja wywolywana w zwierzeciu do przekazania zasobu*/
-	this->owoc = this->owoc - owoc;
+	this->owoc = this->owoc - zasob;
 	if (this->owoc < 0) {
-		owoc = owoc + this->owoc;
+		zasob = zasob + this->owoc;
 		this->owoc = 0;
 	}
-	return owoc;
+	return zasob;
 }
 
 int KrzewOwocowy::get_zasob()

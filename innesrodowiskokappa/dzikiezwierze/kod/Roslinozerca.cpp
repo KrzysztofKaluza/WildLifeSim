@@ -52,7 +52,7 @@ void Roslinozerca::maszyna_stanow()
 	else if (this->glod <= 0 || this->pragnienie <= 0) {
 		//stan śmierci przenoszący do stanu pośmiertnego i oddający zasoby do pola
 		this->stan = State::smierc;
-		this->pole_na_ktorym_stoi->smierc_zwierzatka(this->przenoszone_mieso);
+		this->pole_na_ktorym_stoi->dodaj_mieso(this->przenoszone_mieso);
 		this->czy_zyje = false;
 		this->stan = State::koniec;
 	}

@@ -19,15 +19,15 @@ void ZrodloWody::ustaw_zasob(int nowa_woda)
 	this->woda = nowa_woda;
 }
 
-int ZrodloWody::uzyj_zasob(int woda)
+int ZrodloWody::uzyj_zasob(int zasob)
 {
 	/*funkcja wywolywana w zwierzeciu do przekazania zasobu*/
-	this->woda = this->woda - woda;
+	this->woda = this->woda - zasob;
 	if (this->woda < 0) {
-		woda = woda + this->woda;
+		zasob = zasob + this->woda;
 		this->woda = 0;
 	}
-	return woda;
+	return zasob;
 }
 
 int ZrodloWody::get_zasob()

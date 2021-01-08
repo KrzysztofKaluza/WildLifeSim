@@ -39,7 +39,7 @@ void Miesozerca::maszyna_stanow()
 	else if (this->glod <= 0 || this->pragnienie <= 0 || this->stan == State::smierc) {
 		//stan śmierci przenoszący do stanu pośmiertnego i oddający zasoby do pola
 		this->stan = State::smierc;
-		this->pole_na_ktorym_stoi->smierc_zwierzatka(this->przenoszone_mieso);
+		this->pole_na_ktorym_stoi->dodaj_mieso(this->przenoszone_mieso);
 		this->czy_zyje = false;
 		this->stan = State::koniec;
 	}
@@ -102,7 +102,7 @@ void Miesozerca::czesc_operacyjna()
 	double kat;
 	double kierunek;
 	double dystans;
-	int ile_brakuje = NULL;
+	int ile_brakuje = 0;
 
 
 	switch (this->stan) {
@@ -110,41 +110,24 @@ void Miesozerca::czesc_operacyjna()
 		/*
 			Deklaracja w jaki sposob się rusza, zwierze ściga ofiarę, ofiarą może być roślinożerca lub każde zwierze w zależności od poziomu głodu
 		*/
-		if (this->glod >= this->prog_ataku_miesozercow) {
-			wsp_x = static_cast<float>(this->najblizsza_ofiara_roslinozerca->getPozycja_x()) - static_cast<float>(this->pozycja.x);
-			wsp_y = static_cast<float>(this->najblizsza_ofiara_roslinozerca->getPozycja_y()) - static_cast<float>(this->pozycja.y);
-			kat = atan(wsp_y / wsp_x);
-			kierunek = kat / 360.f;
-			dystans = sqrt(pow(wsp_x, 2) + pow(wsp_y, 2));
-			if (dystans < 3) {
-				this->pozycja.x = this->najblizsza_ofiara_roslinozerca->getPozycja_x();
-				this->pozycja.y = this->najblizsza_ofiara_roslinozerca->getPozycja_y();
-				this->najblizsza_ofiara_roslinozerca->usmierc();
-			}
-			else { 
-				this->ruch(kierunek); 
-			}
+		wsp_x = static_cast<float>(this->najblizsza_ofiara_zwierze->getPozycja_x()) - static_cast<float>(this->pozycja.x);
+		wsp_y = static_cast<float>(this->najblizsza_ofiara_zwierze->getPozycja_y()) - static_cast<float>(this->pozycja.y);
+		kat = atan(wsp_y / wsp_x);
+		kierunek = kat / 360.f;
+		dystans = sqrt(pow(wsp_x, 2) + pow(wsp_y, 2));
+		if (dystans < 3) {
+			this->pozycja.x = this->najblizsza_ofiara_zwierze->getPozycja_x();
+			this->pozycja.y = this->najblizsza_ofiara_zwierze->getPozycja_y();
+			this->najblizsza_ofiara_zwierze->usmierc();
 		}
 		else {
-			wsp_x = static_cast<float>(this->najblizsza_ofiara_zwierze->getPozycja_x()) - static_cast<float>(this->pozycja.x);
-			wsp_y = static_cast<float>(this->najblizsza_ofiara_zwierze->getPozycja_y()) - static_cast<float>(this->pozycja.y);
-			kat = atan(wsp_y / wsp_x);
-			kierunek = kat / 360.f;
-			dystans = sqrt(pow(wsp_x, 2) + pow(wsp_y, 2));
-			if (dystans < 3) {
-				this->pozycja.x = this->najblizsza_ofiara_zwierze->getPozycja_x();
-				this->pozycja.y = this->najblizsza_ofiara_zwierze->getPozycja_y();
-				this->najblizsza_ofiara_zwierze->usmierc();
-			}
-			else {
-				this->ruch(kierunek);
-			}
+			this->ruch(kierunek);
 		}
 		break;
 	case State::jedzenie:
 		/*spożywanie jedzenia*/
 		ile_brakuje = MAX_GLOD - this->glod;
-		this->glod = this->glod + this->pole_na_ktorym_stoi->jedz_mieso(ile_brakuje);
+		this->glod = this->glod + this->pole_na_ktorym_stoi->uzyj_mieso(ile_brakuje);
 		break;
 	case State::picie:
 		/*spozywanie picia*/
@@ -154,18 +137,6 @@ void Miesozerca::czesc_operacyjna()
 	default:
 		break;
 	}
-}
-
-void Miesozerca::setNajblizsza_ofiara_zwierze(Stworzenie * zwierz)
-{
-	/*przypisuje zwierze, które jest najbliżej*/
-	this->najblizsza_ofiara_zwierze = zwierz;
-}
-
-void Miesozerca::setNajblizsza_ofiara_roslinozerca(Stworzenie * roslinozerca)
-{	
-	/*przypisuje roslinożerce, który jest najbliżej*/
-	this->najblizsza_ofiara_roslinozerca = roslinozerca;
 }
 
 void Miesozerca::ruch(float kierunek)

@@ -12,12 +12,12 @@ protected:
 public:
 	Pole();
 	virtual void ustaw_zasob() = 0;
-	virtual int uzyj_zasob(int) = 0;
+	virtual int uzyj_zasob(int zasob) = 0;
 	virtual int get_zasob() = 0;
 	virtual Typ_pola getRodzaj_pola();
 	int get_mieso();
-	int jedz_mieso(int zjedzone_mieso);
-	void smierc_zwierzatka(int mieso_z_zwierzatka);
+	int uzyj_mieso(int zjedzone_mieso);
+	void dodaj_mieso(int mieso);
 
 };
 

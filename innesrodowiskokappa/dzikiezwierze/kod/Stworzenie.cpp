@@ -3,6 +3,8 @@
 Stworzenie::Stworzenie()
 {
 	/*Konstruktor*/
+	this->najblizsza_ofiara_zwierze = NULL;
+	this->prog_ataku_miesozercow = 0;
 	this->czy_zyje = true;
 	this->HP = rand() % 50 + 101;
 	this->glod = MAX_GLOD;
@@ -13,15 +15,6 @@ Stworzenie::Stworzenie()
 	this->szuka_jedzenie = false;
 	this->szuka_picie = false;
 	this->czy_dotarl = true;
-}
-
-
-void Stworzenie::update()
-{
-}
-
-void Stworzenie::maszyna_stanow()
-{
 }
 
 State Stworzenie::getStan()
@@ -83,6 +76,11 @@ int Stworzenie::getPozycja_y()
 	return this->pozycja.y;
 }
 
+int Stworzenie::getProg_ataku_miesozercow()
+{
+	return this->prog_ataku_miesozercow;
+}
+
 bool Stworzenie::getCzy_zyje()
 {
 	return this->czy_zyje;
@@ -107,12 +105,7 @@ bool Stworzenie::czyPozaObszarem(int pos_x, int pos_y)
 
 void Stworzenie::setNajblizsza_ofiara_zwierze(Stworzenie * zwierz)
 {
-	//nadpisywane w miesożercy i tam używane
-}
-
-void Stworzenie::setNajblizsza_ofiara_roslinozerca(Stworzenie * roslinozerca)
-{
-	//nadpisywane w miesożercy i tam używane
+	this->najblizsza_ofiara_zwierze = zwierz;
 }
 
 void Stworzenie::usmierc()
